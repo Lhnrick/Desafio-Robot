@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.13.0 on win32)" generated="2025-03-10T18:56:12.142404" rpa="false" schemaversion="5">
+<suite id="s1" name="Cadastro Perfil" source="c:\Users\luizgoncalves\source\repos\Desafio\test\cadastro_perfil.robot">
+<kw name="Realizar acesso da tela" owner="keyword" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:12.291484" level="INFO">Opening browser 'chrome' to base url 'https://desafio-equipe.vercel.app/'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>browser=chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-10T18:56:12.291250" elapsed="2.044554"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.336084" elapsed="0.040051"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:12.290811" elapsed="2.085521"/>
+</kw>
+<test id="s1-t1" name="Cenário 3 - Cadastro sem campo obrigatório &quot;Data de Nascimento&quot;" line="35">
+<kw name="Dado que estou na tela &quot;Cadastrar perfil de usuário inteligente&quot;" owner="keyword">
+<kw name="Get Title" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.383044" level="INFO">${titulo_obtido} = Cadastrar Perfil de Usuário Inteligente</msg>
+<var>${titulo_obtido}</var>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.377399" elapsed="0.005821"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${titulo_obtido}</arg>
+<arg>${TITULO_PRINCIPAL}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.383388" elapsed="0.000251"/>
+</kw>
+<doc>Valida que estou na tela de cadastro de perfil de usuário inteligente</doc>
+<status status="PASS" start="2025-03-10T18:56:14.377128" elapsed="0.006610"/>
+</kw>
+<kw name="Quando o usuário preenche o campo &quot;Nome completo&quot; com @NOME_COMPLETO" owner="keyword">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.385263" level="INFO">Typing text 'Luiz Henrique de Andrade Gonçalves' into text field 'id=nome'.</msg>
+<arg>${campo_nome}</arg>
+<arg>${NOME_COMPLETO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.384728" elapsed="0.200808"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.384317" elapsed="0.201425"/>
+</kw>
+<kw name="E insere sua impressão digital validada no leitor biométrico" owner="keyword">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.587398" level="INFO">Clicking element 'id=impressao-digital'.</msg>
+<arg>${campo_impressao_digital}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.586942" elapsed="0.061030"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.667408" level="INFO">${titulo_obtido} = Impressão digital registrada!</msg>
+<var>${titulo_obtido}</var>
+<arg>id=impressao-digital-text</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.648278" elapsed="0.019282"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${titulo_obtido}</arg>
+<arg>Impressão digital registrada!</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.667723" elapsed="0.000212"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.586443" elapsed="0.081580"/>
+</kw>
+<kw name="E preenche o campo &quot;Preferências de Navegação&quot;" owner="keyword">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.669066" level="INFO">Typing text 'Google Chrome, Edge, Mozilla, Firefox' into text field 'id=preferenciasNavegacao'.</msg>
+<arg>${campo_preferencias_navegacao}</arg>
+<arg>${PREFERENCIA_NAVEGACAO}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.668853" elapsed="0.157108"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.668580" elapsed="0.157546"/>
+</kw>
+<kw name="E carrego uma foto no campo &quot;Foto de Perfil&quot;" owner="keyword">
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.827856" level="INFO">Sending C:\Users\luizgoncalves\source\repos\Desafio\imagens\foto.png to browser.</msg>
+<arg>${campo_foto_perfil}</arg>
+<arg>${CAMINHO_IMAGEM}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.827410" elapsed="0.030126"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.826722" elapsed="0.030991"/>
+</kw>
+<kw name="E seleciono um idioma no campo &quot;Preferência de Idioma&quot;" owner="keyword">
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.859002" level="INFO">Selecting options from selection list 'id=idioma' by value es.</msg>
+<arg>${campo_preferencia_idioma}</arg>
+<arg>${LISTA_IDIOMAS}[2]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.858735" elapsed="0.068000"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.858370" elapsed="0.068669"/>
+</kw>
+<kw name="E seleciono um nível de privacidade no campo &quot;Nível de Privacidade&quot;" owner="keyword">
+<kw name="Select From List By Value" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.928474" level="INFO">Selecting options from selection list 'id=privacidade' by value medio.</msg>
+<arg>${campo_nivel_privacidade}</arg>
+<arg>${LISTA_NIVEL_PRIVACIDADE}[1]</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.928116" elapsed="0.055477"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.927688" elapsed="0.056195"/>
+</kw>
+<kw name="E marco a opção &quot;Consentimento para Coleta de Dados&quot;" owner="keyword">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Checkbox Should Be Selected" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:14.986445" level="INFO">Verifying checkbox 'id=consentimento' is selected.</msg>
+<msg time="2025-03-10T18:56:15.191993" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-03-10T18:56:15.192200" level="FAIL">Checkbox 'id=consentimento' should have been selected but was not.</msg>
+<arg>${campo_checkbox_consentimento}</arg>
+<doc>Verifies checkbox ``locator`` is selected/checked.</doc>
+<status status="FAIL" start="2025-03-10T18:56:14.986017" elapsed="0.207982">Checkbox 'id=consentimento' should have been selected but was not.</status>
+</kw>
+<msg time="2025-03-10T18:56:15.194192" level="INFO">${status} = False</msg>
+<var>${status}</var>
+<arg>Checkbox Should Be Selected</arg>
+<arg>${campo_checkbox_consentimento}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-03-10T18:56:14.985407" elapsed="0.208854"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${status}">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:15.195081" level="INFO">Clicking element 'id=consentimento'.</msg>
+<arg>${campo_checkbox_consentimento}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.194820" elapsed="0.059678"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:15.194439" elapsed="0.060205"/>
+</branch>
+<status status="PASS" start="2025-03-10T18:56:15.194384" elapsed="0.060342"/>
+</if>
+<status status="PASS" start="2025-03-10T18:56:14.984603" elapsed="0.270174"/>
+</kw>
+<kw name="E clico no botão &quot;Finalizar Cadastro&quot;" owner="keyword">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:15.255962" level="INFO">Clicking element 'css=button.btn-submit'.</msg>
+<arg>${botao_finalizar_cadastro}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.255735" elapsed="0.062624"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:15.255410" elapsed="0.063124"/>
+</kw>
+<kw name="Então valido que recebi o alerta de &quot;Preencha este campo.&quot;" owner="keyword">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:15.319865" level="INFO">Clicking button 'css=.btn-submit'.</msg>
+<arg>css=.btn-submit</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.319532" elapsed="0.086425"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-03-10T18:56:15.406781" level="INFO">Executing JavaScript:
+return document.getElementById('dataNascimento').validationMessage;
+Without any arguments.</msg>
+<msg time="2025-03-10T18:56:15.412629" level="INFO">${mensagem} = Preencha este campo.</msg>
+<var>${mensagem}</var>
+<arg>return document.getElementById('${campo}').validationMessage;</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.406256" elapsed="0.006518"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${mensagem}</arg>
+<arg>Preencha este campo.</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.412936" elapsed="0.000195"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${mensagem}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-10T18:56:15.413238" elapsed="0.000393"/>
+</kw>
+<arg>dataNascimento</arg>
+<status status="PASS" start="2025-03-10T18:56:15.319146" elapsed="0.094611"/>
+</kw>
+<status status="PASS" start="2025-03-10T18:56:14.376448" elapsed="1.037692"/>
+</test>
+<doc>Acessa os campos da tela e valida o cadastro de usuário</doc>
+<status status="PASS" start="2025-03-10T18:56:12.146531" elapsed="3.269051"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Cadastro Perfil">Cadastro Perfil</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
