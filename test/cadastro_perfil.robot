@@ -53,4 +53,4 @@ Cenário 3 - Cancelamento do cadastro
     E seleciono um nível de privacidade no campo "Nível de Privacidade"
     E marco a opção "Consentimento para Coleta de Dados"
     E clico no botão "Cancelar"
-    Então o processo de cadastro é cancelado
+    Então o processo de cadastro é cancelado e os campos são limpos

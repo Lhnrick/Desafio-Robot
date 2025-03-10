@@ -47,8 +47,13 @@ clico no botão "Finalizar Cadastro"
 clico no botão "Cancelar"
     Click Element    ${botao_cancelar}
 
-o processo de cadastro é cancelado
-    Wait Until Element Is Visible    id=header
+o processo de cadastro é cancelado e os campos são limpos
+    ${valor_nome}=    Get Value    ${campo_nome}
+    ${valor_dataNascimento}=    Get Value    ${campo_data_nascimento}
+    ${valor_preferencias}=    Get Value    ${campo_preferencias_navegacao}
+    Should Be Empty    ${valor_nome}
+    Should Be Empty    ${valor_dataNascimento}
+    Should Be Empty    ${valor_preferencias}
 
 valido que recebi o alerta de "Preencha este campo."
     [Arguments]    ${campo}
