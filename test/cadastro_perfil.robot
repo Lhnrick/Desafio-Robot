@@ -4,7 +4,8 @@ Documentation       Acessa os campos da tela e valida o cadastro de usuário
 
 Resource            ../resources/keyword.robot
 
-Suite Setup         Realizar acesso da tela
+Test Setup          Realizar acesso da tela
+Test Teardown       Close Browser
 
 
 *** Test Cases ***
@@ -44,7 +45,7 @@ Cenário 3 - Cadastro sem campo obrigatório "Data de Nascimento"
     E clico no botão "Finalizar Cadastro"
     Então valido que recebi o alerta de "Preencha este campo."    dataNascimento
 
-Cenário 3 - Cancelamento do cadastro
+Cenário 4 - Cancelamento do cadastro
     Dado que estou na tela "Cadastrar perfil de usuário inteligente"
     Quando insere sua impressão digital validada no leitor biométrico
     E preenche o campo "Preferências de Navegação"
