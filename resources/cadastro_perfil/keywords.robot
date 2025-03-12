@@ -1,12 +1,14 @@
 Language: ptbr
 *** Settings ***
 Library     SeleniumLibrary
-Resource    variables.robot
+Library     Collections
+Resource    ../../resources/cadastro_perfil/variables.robot
+Resource    ../../resources/global_variables.robot
 
 
 *** Keywords ***
 Realizar acesso da tela
-    Open Browser    ${BASE_URL}    browser=chrome
+    Open Browser    ${BASE_URL}    ${NAVEGADOR}
     Maximize Browser Window
 
 que estou na tela "Cadastrar perfil de usuário inteligente"
@@ -20,9 +22,13 @@ o usuário preenche o campo "Nome completo" com @NOME_COMPLETO
 preenche o campo "Data de Nascimento" com @DATA_NASCIMENTO
     Input Text    ${campo_data_nascimento}    ${DATA_NASCIMENTO}
 
+preenche o campo "Data de Nascimento" com @DATA_NASCIMENTO_INVALIDA
+    Input Text    ${campo_data_nascimento}    ${DATA_NASCIMENTO_INVALIDA}
+
 insere sua impressão digital validada no leitor biométrico
     Click Element    ${campo_impressao_digital}
-    ${titulo_obtido}=    Get Text    id=impressao-digital-text
+    Wait Until Element Is Visible    impressao-digital-text
+    ${titulo_obtido}=    Get Text    impressao-digital-text
     Should Be Equal As Strings    ${titulo_obtido}    Impressão digital registrada!
 
 preenche o campo "Preferências de Navegação"
@@ -55,9 +61,18 @@ o processo de cadastro é cancelado e os campos são limpos
     Should Be Empty    ${valor_dataNascimento}
     Should Be Empty    ${valor_preferencias}
 
-valido que recebi o alerta de "Preencha este campo."
+Valido que recebi o alerta
     [Arguments]    ${campo}
-    Click Button    css=.btn-submit
+    ${mensagens}=    Create Dictionary
+    ...    nome=Preencha este campo.
+    ...    dataNascimento=Preencha este campo.
+    ...    fotoPerfil=Selecione um arquivo.
+    ...    consentimento=Marque esta caixa se deseja continuar.
+    ${mensagem_esperada}=    Get From Dictionary    ${mensagens}    ${campo}
     ${mensagem}=    Execute JavaScript    return document.getElementById('${campo}').validationMessage;
-    Should Contain    ${mensagem}    Preencha este campo.
+    Should Contain    ${mensagem}    ${mensagem_esperada}
     Log To Console    ${mensagem}
+
+Valido que recebi o alerta de Data de Nascimento inválida
+    ${mensagem}=    Execute JavaScript    return document.getElementById('dataNascimento').validationMessage;
+    Should Contain    ${mensagem}    Insira um valor válido. O campo está incompleto ou tem uma data inválida.
